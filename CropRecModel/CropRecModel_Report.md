@@ -5,7 +5,33 @@ Group Project: Applying Mathematical Concepts to Real-World Issues in Data Scien
 Aims:
 Our model will calculate the suitability of different crops at a theoretical Farm A, focusing on differences in soil nutritional values, analysing the three-dimensional impact of Nitrogen (N), Phosphorus (P), Potassium (K) to provide personalised crop recommendation. This is calculated by Euclidean distance as a measure of suitability for different crops relative to soil data. After recommending the most suitable crops, the second part of our model calculates the optimum method through which crop yields can be effectively increased through the alteration of soil states and nutrition using additional fertilisers. Our final model element integrates cost as a factor in crop selection. Helping farmers to choose the correct crop for their soil helps to maximise expected yield, whilst finding the best way of optimising soil nutrient ratios using gradient descent helps farmers to make economically advantageous decisions.
 
-Both involves the model and the statistical analysis done to better understand the data
+Both involve the model and the statistical analysis done to better understand the data.
+
+![image](https://github.com/user-attachments/assets/315dd818-007d-4219-975f-e60de3f62fc6)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 References:
 
