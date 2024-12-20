@@ -9,8 +9,7 @@ Both involves the model and the statistical analysis done to better understand t
 
 References:
 
-- Harvard.edu, 2023. Crop_recommendation.tab - Harvard Dataverse. Accessed 26 Nov.
-2024.
+- Harvard.edu, 2023. Crop_recommendation.tab - Harvard Dataverse. Accessed 26 Nov. 2024.
 - www.india.gov.in. (n.d.). Website of Ministry of Agriculture & Farmers Welfare| National
 Portal of India. [online] Available at:
 https://www.india.gov.in/website-ministry-agriculture-farmers-welfare
