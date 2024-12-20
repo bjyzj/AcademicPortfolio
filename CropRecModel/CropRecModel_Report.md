@@ -7,7 +7,39 @@ Our model will calculate the suitability of different crops at a theoretical Far
 
 Both involve the model and the statistical analysis done to better understand the data.
 
+
+# Descriptive Statistics of the Crop Data
+
 ![image](https://github.com/user-attachments/assets/315dd818-007d-4219-975f-e60de3f62fc6)
+
+
+
+We also considered the mean and s.d. required for each crop. The mean and
+standard deviation of the environmental conditions were calculated, and an “optimal
+growth range” was defined for each crop, laying the foundation for crop
+recommendation. Five example crops are shown below:
+
+
+![image](https://github.com/user-attachments/assets/885bcd81-9c92-461d-989a-e4418cc05e25)
+
+Statistical analysis of crop growing conditions allows us to identify similarities
+and differences between crops. By comparing crop requirements in terms of N, P , K and
+other environmental variables, we can combine the model with deeper knowledge of
+different crops, helping the model to recommend the most suitable crop.
+
+
+# Mathematical Model
+
+Our model will focus primarily on Nitrogen, Phosphorus, and Potassium as the
+NPK ratio is a standardised figure which may serve as a reference point in precision
+agriculture, with possible variation based on crop type, crop stage, and soil types.
+Farmer A’s theoretical soil values were chosen as N = 120, P = 40, and K = 75.
+From the descriptive statistics, this places the Nitrogen value at almost the upper limit
+of the data set, the Phosphorus value below the mean but within one standard deviation,
+and the Potassium value above the mean but within one standard deviation. This selection 
+therefore examines an unbalanced and nutrient-deficient soil, identifying the
+ideal crop that might thrive under challenging conditions.
+
 
 
 
