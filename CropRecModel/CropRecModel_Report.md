@@ -115,6 +115,7 @@ illustrates the distance between
 the farmer's soil and the ideal
 crop values at each iteration.
 ![image](https://github.com/user-attachments/assets/9513ea56-8752-4722-b2ef-93fd8c488e85)
+
 Overall, this suggests that the optimisation is
 effectively working with the provided crop data. However , there could be potential
 underfitting or ineffective learning due to a lack of complexity in the data or the model.
