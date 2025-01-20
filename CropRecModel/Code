@@ -1,0 +1,102 @@
+import numpy as np
+import pandas as pd
+
+import math
+from mpl_toolkits import mplot3d
+import matplotlib.pyplot as plt
+
+from bokeh.io import output_notebook, show
+from bokeh.plotting import figure
+from bokeh.palettes import Magma, Inferno, Plasma, Viridis, Cividis 
+output_notebook()
+
+import numpy as np
+import pandas as pd
+
+file_path = '/Users/zoeclare/Downloads/Crop_recommendation-2.csv'
+df = pd.read_csv(file_path)
+print(df.head())
+
+uniqueCrops = df['label'].unique().tolist()
+print(f"Unique crops: {uniqueCrops}")
+
+averageN = df['N'].mean()
+averageP = df['P'].mean()
+averageK = df['K'].mean()
+averageTemp = df['temperature'].mean()
+averageHum = df['humidity'].mean()
+averagePH = df['ph'].mean()
+averageRain = df['rainfall'].mean()
+
+print(f"The average N is: {averageN}")
+print(f"The average P is: {averageP}")
+print(f"The average K is: {averageK}")
+print(f"The average temperature is: {averageTemp}")
+print(f"The average humidity is: {averageHum}")
+print(f"The average ph is: {averagePH}")
+print(f"The average rainfall is: {averageRain}")
+
+averageKperCrop = []
+averagePperCrop = []
+averageNperCrop = []
+
+for crop in uniqueCrops:
+    averageK = df[df['label'] == crop]['K'].mean()
+    averageKperCrop.append({'Crop': crop, 'Average Potassium': averageK})
+    
+    averageN = df[df['label'] == crop]['N'].mean()
+    averageNperCrop.append({'Crop': crop, 'Average Nitrogen': averageN})
+    
+    averageP = df[df['label'] == crop]['P'].mean()
+    averagePperCrop.append({'Crop': crop, 'Average Phosphorus': averageP})
+
+averageKperCrop_df = pd.DataFrame(averageKperCrop)
+averagePperCrop_df = pd.DataFrame(averagePperCrop)
+averageNperCrop_df = pd.DataFrame(averageNperCrop)
+
+print("Average Potassium per Crop:")
+print(averageKperCrop_df)
+print("\nAverage Phosphorus per Crop:")
+print(averagePperCrop_df)
+print("\nAverage Nitrogen per Crop:")
+print(averageNperCrop_df)
+
+averageNPKperCrop_df = pd.merge(averageNperCrop_df, averagePperCrop_df, on="Crop")
+averageNPKperCrop_df = pd.merge(averageNPKperCrop_df, averageKperCrop_df, on="Crop")
+
+print("\nAverage N, P, K per Crop (merged):")
+print(averageNPKperCrop_df)
+
+
+#Recommendation based on farmerNPK 
+farmerNPK = {'N': 120, 'P': 40, 'K': 75}
+
+def CalculateDistance(farmerNPK, cropAverages):
+    distance = np.sqrt(
+        (farmerNPK['N'] - cropAverages['Average Nitrogen'])**2 +
+        (farmerNPK['P'] - cropAverages['Average Phosphorus'])**2 +
+        (farmerNPK['K'] - cropAverages['Average Potassium'])**2
+    )
+    return distance
+
+
+cropDistances = []
+
+for index, row in averageNPKperCrop_df.iterrows():
+    cropAverages = {
+        'Average Nitrogen': row['Average Nitrogen'],
+        'Average Phosphorus': row['Average Phosphorus'],
+        'Average Potassium': row['Average Potassium']
+    }    
+    
+    distance = CalculateDistance(farmerNPK, cropAverages)
+    cropDistances.append({'Crop': row['Crop'], 'Total Distance': distance})
+
+cropDistances_df = pd.DataFrame(cropDistances)
+
+cropDistances_df = cropDistances_df.sort_values(by='Total Distance')
+
+print(cropDistances_df)
+
+print("\nClosest crop to farmer's soil values:")
+print(cropDistances_df.head(1))
